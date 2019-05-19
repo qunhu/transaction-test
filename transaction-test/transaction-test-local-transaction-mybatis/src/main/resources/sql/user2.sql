@@ -3,4 +3,4 @@ CREATE TABLE `test`.`user2` (
   `name` VARCHAR(45) NOT NULL DEFAULT '',
   PRIMARY KEY(`id`)
 )
-ENGINE = InnoDB;
+ENGINE = InnoDB DEFAULT CHARSET=utf8;

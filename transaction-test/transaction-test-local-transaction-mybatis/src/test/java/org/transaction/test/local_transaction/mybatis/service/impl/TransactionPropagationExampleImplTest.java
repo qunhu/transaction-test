@@ -129,6 +129,7 @@ public class TransactionPropagationExampleImplTest {
 	 * 外围方法开启事务，插入“张三”、“李四”方法都在外围方法的事务中运行，加入外围方法事务，所以三个方法同一个事务。外围方法或内部方法抛出异常，
 	 * 整个事务全部回滚。虽然我们catch了插入“李四”方法的异常，使异常不会被外围方法感知，但是插入“李四”方法事务被回滚，内部方法外围方法一个事务，所以整体事务被回滚了。
 	 */
+	//TODO remember 主要差异
 	@Test
 	public void testTransaction_required_required_exception_try() {
 		transactionPropagationExample.transaction_required_required_exception_try();
@@ -167,6 +168,7 @@ public class TransactionPropagationExampleImplTest {
 	 * 外围方法开启事务，插入“张三”、“李四”方法都在外围方法的事务中运行，加入外围方法事务，所以三个方法同一个事务。外围方法或内部方法抛出异常，
 	 * 整个事务全部回滚。
 	 */
+	//TODO remember 主要差异
 	@Test
 	public void testTransaction_exception_supports_supports() {
 		transactionPropagationExample.transaction_exception_supports_supports();
@@ -202,6 +204,7 @@ public class TransactionPropagationExampleImplTest {
 	 * 外围方法开启事务，插入“张三”方法和外围方法一个事务，插入“李四”方法、插入“王五”方法分别在独立的新建事务中，
 	 * 外围方法抛出异常只回滚和外围方法同一事务的方法，故插入“张三”的方法回滚。
 	 */
+	//TODO remember 主要差异
 	@Test
 	public void testTransaction_exception_required_requiresNew_requiresNew() {
 		transactionPropagationExample.transaction_exception_required_requiresNew_requiresNew();
@@ -212,6 +215,7 @@ public class TransactionPropagationExampleImplTest {
 	 * 外围方法开启事务，插入“张三”方法和外围方法一个事务，插入“李四”方法、插入“王五”方法分别在独立的新建事务中。插入“王五”方法抛出异常，首先插入
 	 * “王五”方法的事务被回滚，异常继续抛出被外围方法感知，外围方法事务亦被回滚，故插入“张三”方法也被回滚。
 	 */
+	//TODO remember 主要差异
 	@Test
 	public void testTransaction_required_requiresNew_requiresNew_exception() {
 		transactionPropagationExample.transaction_required_requiresNew_requiresNew_exception();
@@ -222,6 +226,7 @@ public class TransactionPropagationExampleImplTest {
 	 * 外围方法开启事务，插入“张三”方法和外围方法一个事务，插入“李四”方法、插入“王五”方法分别在独立的新建事务中。插入“王五”方法抛出异常，首先插入
 	 * “王五”方法的事务被回滚，异常被catch不会被外围方法感知，外围方法事务不回滚，故插入“张三”方法插入成功。
 	 */
+	//TODO remember 主要差异
 	@Test
 	public void testTransaction_required_requiresNew_requiresNew_exception_try() {
 		transactionPropagationExample.transaction_required_requiresNew_requiresNew_exception_try();
@@ -278,6 +283,17 @@ public class TransactionPropagationExampleImplTest {
 	@Test
 	public void testTransaction_required_notSuppored_exception() {
 		transactionPropagationExample.transaction_required_notSuppored_exception();
+	}
+
+	/**
+	 * 结果：张三（插入），李四（插入）</br>
+	 * 外围方法开启事务，因为插入“张三”方法传播为required，所以和外围方法同一个事务。插入“李四”方法不在任何事务中运行。
+	 * 插入“李四”方法抛出异常，因为此方法不开启事务，所以此方法不会被回滚，异常外围方法被catch不会被外围方法感知，外围方法事务不回滚，
+	 * 故插入“张三”方法插入成功。
+	 */
+	@Test
+	public void testTransaction_required_notSuppored_exception_try() {
+		transactionPropagationExample.transaction_required_notSuppored_exception_try();
 	}
 
 	// ---------------------------------------------------------------------------------
@@ -426,8 +442,17 @@ public class TransactionPropagationExampleImplTest {
 	public void testNotransaction_addRequired_getRequired_get() {
 		transactionPropagationExample.notransaction_addRequired_getRequired_get();
 	}
-	
-	
+
+	/**
+	 * 结果：getRequired可见，get可见</br>
+	 * 外围方法未开启事务，addRequired在自己的事务中运行，执行外之后即对外可见，故getNotSuppored和get都可见事务执行结果。
+	 */
+	@Test
+	public void testNotransaction_addRequired_getNotSuppored_get() {
+		transactionPropagationExample.notransaction_addRequired_getNotSuppored_get();
+	}
+
+
 	/**
 	 * 结果：getRequired可见，get可见</br>
 	 * 外围方法开启事务，addRequired和外围方法同事务，getRequired和get都和外围方法同一个事务，故均可见addRequired执行之后的结果。
@@ -441,6 +466,7 @@ public class TransactionPropagationExampleImplTest {
 	 * 结果：getNested可见，get可见</br>
 	 * 外围方法开启事务，addRequired和外围方法同事务，getNested属于外围事务子事务，get属于外围事务，故均可见addRequired执行之后的结果。
 	 */
+	// TODO remember 主要差异
 	@Test
 	public void testTransaction_addRequired_getNested_get() {
 		transactionPropagationExample.transaction_addRequired_getNested_get();
@@ -452,6 +478,7 @@ public class TransactionPropagationExampleImplTest {
 	 * 外围方法开启事务，addRequired和外围方法同事务，getNotSuppored不支持事务，并将外围事务挂起，getNotSuppored不在addRequired事务范围中，由于事务隔离性，getNotSuppored看不到addRequired的执行结果。
 	 * ，get属于外围事务，故可见addRequired执行之后的结果。
 	 */
+	// TODO remember 主要差异
 	@Test
 	public void testTransaction_addRequired_getNotSuppored_get() {
 		transactionPropagationExample.transaction_addRequired_getNotSuppored_get();

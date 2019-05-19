@@ -1,5 +1,7 @@
 package org.transaction.test.local_transaction.mybatis.service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 public interface TransactionPropagationExample {
 	
 	
@@ -49,6 +51,8 @@ public interface TransactionPropagationExample {
 
 	void transaction_notransaction_notransaction_exception();
 
+	void notransaction_addRequired_getNotSuppored_get();
+
 	void notransaction_mandatory();
 
 	void transaction_exception_mandatory_mandatory();
@@ -79,7 +83,9 @@ public interface TransactionPropagationExample {
 
 	void transaction_addRequired_getNested_get();
 
-	void transaction_addRequired_getNotSuppored_get();
+    void transaction_required_notSuppored_exception_try();
+
+    void transaction_addRequired_getNotSuppored_get();
 
 	void transaction_addRequired_getRequiresNew_get();
 

@@ -28,11 +28,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_exception_notransaction_notransaction(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.add(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.add(user2);
 		throw new RuntimeException();
 	}
@@ -41,11 +41,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_notransaction_notransaction_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.add(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addException(user2);
 	}
 	
@@ -54,11 +54,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional
 	public void transaction_exception_notransaction_notransaction(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.add(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.add(user2);
 		throw new RuntimeException();
 	}
@@ -68,11 +68,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional
 	public void transaction_notransaction_notransaction_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.add(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addException(user2);
 	}
 	
@@ -82,11 +82,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_required_required(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequired(user2);
 	}
 	
@@ -94,7 +94,7 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_addRequired_getRequired_get(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		User1 temp1=user1Service.getRequired(1);
 		if(temp1!=null){
@@ -113,11 +113,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_exception_required_required(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequired(user2);
 		
 		throw new RuntimeException();
@@ -130,11 +130,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_required_required_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequiredException(user2);
 	}
 	
@@ -146,11 +146,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_exception_required_required(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequired(user2);
 		
 		throw new RuntimeException();
@@ -164,11 +164,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_required_required_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequiredException(user2);
 	}
 	
@@ -177,7 +177,7 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_addRequired_getRequired_get(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User1 temp1=user1Service.getRequired(1);
@@ -197,7 +197,7 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_addRequired_getNested_get(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User1 temp1=user1Service.getNested(1);
@@ -215,22 +215,22 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_supports_supports_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addSupports(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addSupportsException(user2);
 	}
 	
 	@Override
 	public void notransaction_exception_supports_supports(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addSupports(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addSupports(user2);
 		throw new RuntimeException();
 		
@@ -240,11 +240,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_supports_supports_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addSupports(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addSupportsException(user2);
 	}
 	
@@ -252,11 +252,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_exception_supports_supports(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addSupports(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addSupports(user2);
 		
 		throw new RuntimeException();
@@ -267,22 +267,22 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_requiresNew_requiresNew_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequiresNew(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequiresNewException(user2);
 	}
 	
 	@Override
 	public void notransaction_exception_requiresNew_requiresNew(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequiresNew(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequiresNew(user2);
 		throw new RuntimeException();
 		
@@ -292,15 +292,15 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_required_requiresNew_requiresNew_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequiresNew(user2);
 		
 		User2 user3=new User2();
-		user3.setName("王五");
+		user3.setName("wangwu");
 		user2Service.addRequiresNewException(user3);
 	}
 	
@@ -309,14 +309,14 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_required_requiresNew_requiresNew_exception_try(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequiresNew(user2);
 		User2 user3=new User2();
-		user3.setName("王五");
+		user3.setName("wangwu");
 		try {
 			user2Service.addRequiresNewException(user3);
 		} catch (Exception e) {
@@ -328,15 +328,15 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void transaction_exception_required_requiresNew_requiresNew(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addRequiresNew(user2);
 		
 		User2 user3=new User2();
-		user3.setName("王五");
+		user3.setName("wangwu");
 		user2Service.addRequiresNew(user3);
 		
 		throw new RuntimeException();
@@ -347,7 +347,7 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_addRequired_getRequiresNew_get(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User1 temp1=user1Service.getRequiresNew(1);
@@ -365,11 +365,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_exception_required_notSuppored(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNotSupported(user2);
 		throw new RuntimeException();
 	}
@@ -377,11 +377,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_required_notSuppored_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNotSupportedException(user2);
 	}
 	
@@ -389,11 +389,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_exception_required_notSuppored(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNotSupported(user2);
 		throw new RuntimeException();
 	}	
@@ -402,12 +402,29 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_required_notSuppored_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNotSupportedException(user2);
+	}
+
+	@Override
+	@Transactional
+	public void transaction_required_notSuppored_exception_try(){
+		User1 user1=new User1();
+		user1.setName("zhangsan");
+		user1Service.addRequired(user1);
+
+		User2 user2=new User2();
+		user2.setName("lisi");
+		try {
+			user2Service.addNotSupportedException(user2);
+		} catch (Exception e) {
+			System.out.println("回滚");
+		}
+
 	}
 	
 	
@@ -415,25 +432,41 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_addRequired_getNotSuppored_get(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User1 temp1=user1Service.getNotSupported(1);
 		if(temp1!=null){
-			System.out.println("getRequired可见");
+			System.out.println("getNotSupported可见");
 		}
 		User1 temp2=user1Service.get(1);
 		
 		if(temp2!=null){
 			System.out.println("get可见");
 		}
-	}	
+	}
 
-	
+	@Override
+	public void notransaction_addRequired_getNotSuppored_get(){
+		User1 user1=new User1();
+		user1.setName("zhangsan");
+		user1Service.addRequired(user1);
+
+		User1 temp1=user1Service.getNotSupported(1);
+		if(temp1!=null){
+			System.out.println("getNotSupported可见");
+		}
+		User1 temp2=user1Service.get(1);
+
+		if(temp2!=null){
+			System.out.println("get可见");
+		}
+	}
+
 	@Override
 	public void notransaction_mandatory(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addMandatory(user1);
 	}
 	
@@ -441,11 +474,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_exception_mandatory_mandatory(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addMandatory(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addMandatory(user2);
 		throw new RuntimeException();
 	}
@@ -455,11 +488,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_mandatory_mandatory_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addMandatory(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addMandatoryException(user2);
 	}
 	
@@ -468,11 +501,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_exception_never_never(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNever(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNever(user2);
 		throw new RuntimeException();
 	}
@@ -480,11 +513,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_never_never_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNever(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNeverException(user2);
 	}
 	
@@ -492,7 +525,7 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_never(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNever(user1);
 	}
 	
@@ -501,11 +534,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_exception_nested_nested(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNested(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNested(user2);
 		throw new RuntimeException();
 	}
@@ -514,11 +547,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_nested_nested_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNested(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNestedException(user2);
 	}
 	
@@ -526,11 +559,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_exception_nested_nested(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNested(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNested(user2);
 		throw new RuntimeException();
 	}
@@ -538,11 +571,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void notransaction_nested_nested_exception(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNested(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		user2Service.addNestedException(user2);
 	}
 	
@@ -550,11 +583,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_nested_nested_exception_try(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addNested(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		try {
 			user2Service.addNestedException(user2);
 		} catch (Exception e) {
@@ -562,15 +595,15 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 		}
 	}
 	
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void transaction_required_required_exception_try(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.addRequired(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		try {
 			user2Service.addRequiredException(user2);
 		} catch (Exception e) {
@@ -582,11 +615,11 @@ public class TransactionPropagationExampleImpl implements TransactionPropagation
 	@Override
 	public void transaction_noTransaction_noTransaction_exception_try(){
 		User1 user1=new User1();
-		user1.setName("张三");
+		user1.setName("zhangsan");
 		user1Service.add(user1);
 		
 		User2 user2=new User2();
-		user2.setName("李四");
+		user2.setName("lisi");
 		try {
 			user2Service.addException(user2);
 		} catch (Exception e) {

@@ -71,10 +71,14 @@ public class User1ServiceImpl implements User1Service {
 		user1Mapper.insert(user);
 		throw new RuntimeException();
 	}
-	
+
+	// readOnly=true 只能读数据，不能修改数据
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW,readOnly=true)
 	public User1 getRequiresNew(Integer id){
+//		User1 user1 = new User1();
+//		user1.setName("test readOnly");
+//		user1Mapper.insert(user1);
 		return user1Mapper.selectByPrimaryKey(id);
 	}
 	
